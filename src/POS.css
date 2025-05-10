@@ -1,0 +1,502 @@
+/* POS.css */
+
+.pos-container {
+    display: flex;
+    height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+}
+
+.venta-panel {
+    width: 30%;
+    background-color: #f9f9f9;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    border-right: 5px solid #44464778;
+    overflow: hidden;
+}
+
+.venta-lista {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.venta-item {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.venta-total {
+    padding-top: 10px;
+    font-size: 29px;
+    text-align: right;
+}
+
+.impuestos{
+    padding-top: 1px;
+    font-size: 20px;
+    text-align: right;
+}
+.total-linea {
+    display: inline-block;
+    text-align: left;
+}
+.linea-verde {
+    border: none;
+    border-top: 5px solid green;
+    margin: 0 -15px -75px -15px; /* sobresale 15px a la izquierda y derecha */
+    width: calc(100% + 30px);   /* aumenta 15px a ambos lados */
+  }
+  
+  
+.calculadora {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    padding: 10px 0 0 0;
+    border-radius: 8px;
+    gap: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    max-width: 100%;
+    transform-origin: bottom left;
+    transform: scale(0.97);
+    position: relative;
+    bottom: -60px;
+}
+
+.teclado-container {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    flex-grow: 1;
+}
+
+.teclado {
+    display: grid;
+    grid-template-columns: 100px repeat(4, 70px); /* columna 1 reservada para cliente/pago */
+    grid-template-rows: repeat(5, 60px);
+    gap: 0px;
+}
+
+
+.calculadora-columna {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    width: 45px;
+    height: 300px;
+}
+
+.cliente {
+    grid-column: 1;
+    grid-row: 1 ;
+    background-color: #e5e7eb;
+    text-align: left;
+    font-weight: 600;
+    font-size: 14px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 170px;
+    height: 60px;
+    gap: 2px;
+    /* Espacio entre icono y texto */
+    position: relative; /* Asegura que el z-index funcione */
+}
+
+.icono-cliente {
+    font-size: 18px;
+     position: absolute; /* Lo coloca fuera del flujo normal */
+    left: 10px; /* Controla la posición del icono */
+    z-index: 1; /* Pone el icono detrás del texto */
+}
+
+.texto-cliente {
+    color: #000000;
+    font-size: 16px;
+    text-align: center;
+}
+
+.texto-pago {
+    color: #000000;
+    font-size: 16px;
+    margin-top: 12px; /* separación con el icono */
+    text-align: center;
+}
+
+/* Botón Pago */
+.pago {
+    grid-column: 1;
+    grid-row: 2 / 5;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 50%;
+    text-align: center;
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+    width: 175px;
+    height: 180px;
+
+}
+
+.icono-pago {
+    font-size: 25px;
+    color: #ffffff;
+    background-color: #000000;
+    border-radius: 100%;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.teclado button {
+    font-size: 16px;
+    font-weight: bold;
+    border: 1px solid #d1d5db;
+    border-radius: 1px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.teclado .numero {
+  font-size: 24px;
+}
+
+
+.teclado button:hover {
+    background-color: #b0b8c0;
+}
+
+.teclado .cant {
+    background-color: #10b981;
+    color: rgb(253, 248, 248);
+}
+
+.teclado .desc {
+    color: rgb(0, 0, 0);
+}
+
+.teclado .precio {
+    color: rgb(0, 0, 0);
+}
+
+.fila {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.fila button {
+    flex: 1;
+    padding: 15px;
+    font-size: 18px;
+    border: none;
+    background-color: #ffffff;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s;
+}
+
+.fila button:hover {
+    background-color: #dceeff;
+}
+
+.fila .cant {
+    background-color: #10b981;
+    color: white;
+}
+
+.fila .desc {
+    background-color: #f59e0b;
+    color: white;
+}
+
+.fila .precio {
+    background-color: #3b82f6;
+    color: white;
+}
+
+.fila .pago {
+    background-color: #6366f1;
+    color: white;
+}
+
+
+.productos-panel {
+    flex: 1;
+    padding: 60px 20px 20px 20px; /* Top 60px para dejar espacio a la status-bar */
+    background-color: #fff;
+    overflow-y: auto;
+  } 
+
+.productos-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.titulo {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.buscar {
+    padding: 8px 12px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: 200px;
+}
+
+.productos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 15px;
+}
+
+.producto {
+    background-color: #f1f5f9;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.1s ease-in-out;
+}
+
+.producto:hover {
+    transform: scale(1.05);
+    background-color: #e0f2fe;
+}
+
+.precio-etiqueta {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: #3b82f6;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.nombre {
+    margin-top: 40px;
+    font-weight: 500;
+}
+
+.top-bar {
+    position: fixed;      
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;           /* Que esté por encima de todo */
+    width: 30vw;            /* O puedes usar 100% si el body no tiene margen */
+    background-color: #2c2c2c;
+    color: #ffffff;
+    padding: 13px 30px;      /* Aumenta padding si quieres que se vea más espacioso */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Segoe UI', sans-serif;
+}
+.pos-container {
+    padding-top: 30px; /* Espacio para que no quede debajo de la barra */
+  }
+
+  .logo {
+    font-weight: bold;
+    font-size: 20px;
+  }
+  
+  .logo::first-letter {
+    color: #a100ff; /* Color morado de Odoo */
+  }
+
+  .status-logo {
+    font-weight: bold;
+    font-size: 18px;
+    color: #a100ff;
+  }
+  
+  .user-name {
+    font-style: italic;
+    font-size: 16px;
+  }
+
+  .status-bar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 70%; /* Asume que el panel de productos ocupa 70% */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2c2c2c;
+    padding: 3px 0px;
+    color: white;
+    font-family: 'Segoe UI', sans-serif;
+    z-index: 999; /* Asegura que esté por encima */
+  } 
+  
+  
+  .status-left, .status-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .status-time {
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 80px; /* Este debe ser 100%, no 20px */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 1px 20px;
+    color: rgb(0, 0, 0);
+    font-family: 'Segoe UI', sans-serif;
+    z-index: 999;  
+    box-sizing: border-box;
+    height: 40px; /* Altura definida */
+  }
+
+  .status-controls {
+    display: flex;
+    gap: 2px; /* Aumenta separación entre los botones */
+  }
+  
+
+  .status-btn-home {
+    background-color: #555;
+    color: #ccc;
+    width: 50px;
+    height: 50px;
+    font-size: 12px;        /* Símbolos más grandes */
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 0 0 1px #000;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    text-decoration: none; 
+    
+  }
+
+  .status-btn-home:hover {
+    background-color: #666;
+  }
+
+  a {
+    text-decoration: none;
+  }
+  
+  .wifi-icon {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    margin: 10px;
+  }
+  
+  .wifi-icon span {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 2px solid rgb(0, 240, 92);
+    border-radius: 50%;
+  }
+  
+  .wifi-icon .wave1 {
+    width: 20px;
+    height: 20px;
+    top: 0;
+  }
+  
+  .wifi-icon .wave2 {
+    width: 14px;
+    height: 14px;
+    top: 4px;
+  }
+  
+  .wifi-icon .dot {
+    width: 6px;
+    height: 6px;
+    background-color: rgb(0, 240, 92);
+    border: none;
+    top: 14px;
+    border-radius: 50%;
+  }
+  .wifi-icon img {
+    width: 25px;
+    height: 25px;
+    margin: 2px 10px 10px 10px; /* top right bottom left */
+    filter: brightness(0) saturate(100%) invert(51%) sepia(76%) saturate(445%) hue-rotate(84deg) brightness(95%) contrast(89%);
+  }
+  .productos-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  
+  .producto-card {
+    width: 213px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-family: sans-serif;
+    cursor: pointer;
+  }
+  
+  .imagen-con-precio {
+    position: relative;
+    width: 100%;
+    height: 140px;
+    overflow: hidden;
+  }
+  
+  .producto-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  
+  .precio-overlay {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background-color: #6a5acd;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+  }
+  
+  .nombre-producto {
+    padding: 8px 0;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
