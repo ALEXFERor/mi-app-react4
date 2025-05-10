@@ -84,16 +84,32 @@ const Home = () => {
         </div>
       </div>
 
-      <main className="main-content">
-        <header className="header">
-          <h1>📊 Ventas</h1>
-          <span>{format(new Date(), 'dd/MM/yyyy')}</span>
+      <main className="main-content p-6">
+        <header className="header flex justify-between items-center mb-6">
+          <h1 className="text-3xl font-bold text-gray-800">📊 Ventas</h1>
+          <span className="text-gray-500 text-sm border px-3 py-1 rounded-md shadow-sm bg-white">
+            {format(new Date(), 'dd/MM/yyyy')}
+          </span>
         </header>
 
-        <section className="filters">
-          <input type="date" value={fechaInicio} onChange={e => setFechaInicio(e.target.value)} />
-          <input type="date" value={fechaFin} onChange={e => setFechaFin(e.target.value)} />
-          <select value={filtro} onChange={e => setFiltro(e.target.value)}>
+        <section className="filters grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+          <input
+            type="date"
+            value={fechaInicio}
+            onChange={e => setFechaInicio(e.target.value)}
+            className="w-full border border-gray-300 rounded-lg px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+          />
+          <input
+            type="date"
+            value={fechaFin}
+            onChange={e => setFechaFin(e.target.value)}
+            className="w-full border border-gray-300 rounded-lg px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+          />
+          <select
+            value={filtro}
+            onChange={e => setFiltro(e.target.value)}
+            className="w-full border border-gray-300 rounded-lg px-4 py-2 shadow-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-400"
+          >
             <option value="dia">Día</option>
             <option value="semana">Semana</option>
             <option value="mes">Mes</option>
@@ -103,6 +119,7 @@ const Home = () => {
             placeholder="Cliente o DNI"
             value={clienteBusqueda}
             onChange={e => setClienteBusqueda(e.target.value)}
+            className="w-full border border-gray-300 rounded-lg px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
         </section>
 
